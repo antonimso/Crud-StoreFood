@@ -1,26 +1,17 @@
-package com.example.demo.Plano;
+package com.example.demo.Plano.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Plano {
-	
+
 	@Id
-	@SequenceGenerator(
-			name = "student_sequence",
-			sequenceName = "student_sequence",
-			allocationSize = 1
-			)
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "student_sequence"
-			)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	private String nome;
@@ -32,17 +23,6 @@ public class Plano {
 	
 	public Plano() {
 		
-	}
-
-	public Plano(Long id, String nome, String origem, String destino, Integer tempo, double valorComPlano,
-			double valorSemPlano) {
-		this.id = id;
-		this.nome = nome;
-		this.origem = origem;
-		this.destino = destino;
-		this.tempo = tempo;
-		this.valorComPlano = valorComPlano;
-		this.valorSemPlano = valorSemPlano;
 	}
 
 	public Plano(String nome, String origem, String destino, Integer tempo, double valorComPlano, double valorSemPlano) {

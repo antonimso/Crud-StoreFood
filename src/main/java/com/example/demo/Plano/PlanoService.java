@@ -1,14 +1,16 @@
 package com.example.demo.Plano;
 
-import java.util.List;
+import com.example.demo.Plano.model.Plano;
+import com.example.demo.Plano.repository.PlanoRepository;
 
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PlanoService {
 
-	private PlanoRepository planoRepository;
+	private final PlanoRepository planoRepository;
 	private double valorPorMinuto;
 
 	@Autowired
@@ -16,7 +18,7 @@ public class PlanoService {
 		this.planoRepository = planoRepository;
 	}
 
-	public List<Plano> getPlanos() {
+	public Object getPlanos() {
 		return planoRepository.findAll();
 	}
 
@@ -80,19 +82,21 @@ public class PlanoService {
 	}
 	
 	private void verificaOrigemDestino(Plano plano) {
-		String origin = plano.getOrigem();
-		String destiny = plano.getDestino();
-		if(origin == "011" &&  destiny == "016" ) {
+		comparandoCustos(plano.getOrigem(), plano.getDestino());
+	}
+
+	private void comparandoCustos(String origin, String destiny) {
+		if(Objects.equals(origin, "011") && Objects.equals(destiny, "016")) {
 			valorPorMinuto = 1.9;
-		}else if(origin == "016" &&  destiny == "011") {
+		}else if("016".equals(origin) && Objects.equals(destiny, "011")) {
 			valorPorMinuto = 2.9;
-		}else if(origin == "011" &&  destiny == "017") {
+		}else if("011".equals(origin) && "017".equals(destiny)) {
 			valorPorMinuto = 1.7;
-		}else if(origin == "017" &&  destiny == "011") {
+		}else if("017".equals(origin) && Objects.equals(destiny, "011")) {
 			valorPorMinuto = 2.7;
-		}else if(origin == "011" &&  destiny == "018") {
+		}else if("011".equals(origin) && Objects.equals(destiny, "018")) {
 			valorPorMinuto = 0.9;
-		}else if(origin == "018" &&  destiny == "011") {
+		}else if("018".equals(origin) && Objects.equals(destiny, "011")) {
 			valorPorMinuto = 1.9;
 		}
 	}
