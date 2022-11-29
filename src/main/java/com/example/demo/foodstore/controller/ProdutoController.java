@@ -32,7 +32,7 @@ public class ProdutoController {
     return (List<Produto>) planoservice.getProdutos();
   }
 
-  @DeleteMapping(path = "{produtoId}")
+  @DeleteMapping(path = "/produto/{produtoId}")
   public void deletePlano(@PathVariable("produtoId") Long produtoId) {
     planoservice.deleteProduto(produtoId);
   }

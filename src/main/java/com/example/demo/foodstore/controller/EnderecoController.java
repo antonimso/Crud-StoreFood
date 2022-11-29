@@ -33,7 +33,7 @@ public class EnderecoController {
     return (List<Produto>) enderecoService.getEnderecos();
   }
 
-  @DeleteMapping(path = "{enderecoId}")
+  @DeleteMapping(path = "/endereco/{enderecoId}")
   public void deletePlano(@PathVariable("enderecoId") Long planoId) {
     enderecoService.deleteEndereco(planoId);
   }
